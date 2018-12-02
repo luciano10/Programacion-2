@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pago">
+            <h2><span jhiTranslate="cinepagoApp.pago.detail.title">Pago</span> {{pago.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cinepagoApp.pago.importe">Importe</span></dt>
+                <dd>
+                    <span>{{pago.importe}}</span>
+                </dd>
+                <dt><span jhiTranslate="cinepagoApp.pago.pagoUuid">Pago Uuid</span></dt>
+                <dd>
+                    <span>{{pago.pagoUuid}}</span>
+                </dd>
+                <dt><span jhiTranslate="cinepagoApp.pago.created">Created</span></dt>
+                <dd>
+                    <span>{{pago.created}}</span>
+                </dd>
+                <dt><span jhiTranslate="cinepagoApp.pago.updated">Updated</span></dt>
+                <dd>
+                    <span>{{pago.updated}}</span>
+                </dd>
+                <dt><span jhiTranslate="cinepagoApp.pago.tarjeta">Tarjeta</span></dt>
+                <dd>
+                    <div *ngIf="pago.tarjeta">
+                        <a [routerLink]="['/tarjeta', pago.tarjeta?.id, 'view']">{{pago.tarjeta?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pago', pago.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

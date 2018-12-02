@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cinepagoApp.pago.home.title">Pagos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-pago" [routerLink]="['/pago/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cinepagoApp.pago.home.createLabel">
+            Create new Pago
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="pagos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="importe"><span jhiTranslate="cinepagoApp.pago.importe">Importe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pagoUuid"><span jhiTranslate="cinepagoApp.pago.pagoUuid">Pago Uuid</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="created"><span jhiTranslate="cinepagoApp.pago.created">Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updated"><span jhiTranslate="cinepagoApp.pago.updated">Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tarjeta.id"><span jhiTranslate="cinepagoApp.pago.tarjeta">Tarjeta</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pago of pagos ;trackBy: trackId">
+                <td><a [routerLink]="['/pago', pago.id, 'view' ]">{{pago.id}}</a></td>
+                <td>{{pago.importe}}</td>
+                <td>{{pago.pagoUuid}}</td>
+                <td>{{pago.created | date:'medium'}}</td>
+                <td>{{pago.updated | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="pago.tarjeta">
+                        <a [routerLink]="['../tarjeta', pago.tarjeta?.id, 'view' ]" >{{pago.tarjeta?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/pago', pago.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/pago', pago.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pago/'+ pago.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="pagos && pagos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

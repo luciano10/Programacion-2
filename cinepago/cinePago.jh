@@ -1,0 +1,45 @@
+DEFAULT_MIN = 0
+DEFAULT_MAX = 99999999
+DEFAULT_MIN_LENGTH = 1
+DEFAULT_MAX_LENGTH = 42
+DEFAULT_UUID = 36
+DEFAULT_MIN_CARD = 0
+DEFAULT_MAX_CARD = 19
+DEFAULT_MIN_BALANCE = 0
+
+enum Tipo {
+    DEBITO, CREDITO
+}
+
+entity Cliente {
+    documento Integer required min(DEFAULT_MIN) max(DEFAULT_MAX),
+    apellido String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
+    nombre String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
+    created ZonedDateTime required,
+    updated ZonedDateTime required
+}
+
+entity Tarjeta {
+    numero String required minlength(DEFAULT_MIN_CARD) maxlength(DEFAULT_MAX_CARD) pattern(/[0-9]+/),
+    tipo Tipo required,
+    saldo BigDecimal required min(DEFAULT_MIN_BALANCE),
+    created ZonedDateTime required,
+    updated ZonedDateTime required
+}
+
+entity Pago {
+    importe BigDecimal required min(DEFAULT_MIN_CARD),
+    pagoUuid String required minlength(DEFAULT_UUID) maxlength(DEFAULT_UUID),
+    created ZonedDateTime required,
+    updated ZonedDateTime required
+}
+
+relationship OneToMany {
+    Cliente{tarjeta} to Tarjeta{cliente}
+}
+
+relationship OneToMany {
+    Tarjeta{pago} to Pago{tarjeta}
+}
+
+paginate * with pagination

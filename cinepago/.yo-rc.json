@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "cinepago",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "5.6.1",
+    "applicationType": "monolith",
+    "baseName": "cinepago",
+    "packageName": "cinepago",
+    "packageFolder": "cinepago",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NmNmNjY3ZjhiNGVhMmE5OTE4NzU1NmI5ZDYwYTdkNTI3ZjkwYjFlZDcwNTk4MzUxYWRmMWE3M2RkOWFmMDlmNDYxNzcwZmQ5ZjgzNWU2Y2RlY2Q2YjczNzI0ODcwZGQyNGQ5ZjFlZWNiZGZlY2Y4MTczMjFkZmVhYjljN2E2MjM=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": [
+      "es"
+    ]
+  }
+}
