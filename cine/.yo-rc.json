@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "cine",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "5.6.1",
+    "applicationType": "monolith",
+    "baseName": "cine",
+    "packageName": "cine",
+    "packageFolder": "cine",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MzdmNTJjMmQ3MDI0OTIzMjVlNmQxZjYwY2RkNzNmM2FjMWFhZmFhZmFmODAwNmY5YzhhODBhZWM3MzEwNWUzZmVjNWFjZDQ1ZjJkZTJjOTY4YmQxMzBmMDllYmZmYTRjNjJhNmI0YmQ4Nzg4N2VlZDI2NDhhN2FmYmRlMmZkYTE=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": [
+      "es"
+    ]
+  }
+}
